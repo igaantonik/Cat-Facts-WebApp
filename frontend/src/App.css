@@ -1,0 +1,13 @@
+.App {
+  font-family: 'Optima', sans-serif; 
+  background-color: #e9ecef; 
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+.content-wrap{
+  padding-bottom: 3rem; 
+}
