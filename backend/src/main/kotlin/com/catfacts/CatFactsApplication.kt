@@ -1,12 +1,11 @@
-package com.catfacts.service
+package com.catfacts
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class ServiceApplication
+class CatFactsApplication
 
 fun main(args: Array<String>) {
-    println("Hello!")
-    runApplication<ServiceApplication>(*args)
+    runApplication<CatFactsApplication>(*args)
 }

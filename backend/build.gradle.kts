@@ -46,5 +46,5 @@ tasks.withType<Test> {
 }
 
 tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
-	mainClass.set("com.catfacts.service.ServiceApplicationKt")
+	mainClass.set("com.catfacts.CatFactsApplicationKt")
 }

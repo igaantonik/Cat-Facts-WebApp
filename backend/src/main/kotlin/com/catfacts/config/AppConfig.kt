@@ -1,4 +1,4 @@
-package com.catfacts.service
+package com.catfacts.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

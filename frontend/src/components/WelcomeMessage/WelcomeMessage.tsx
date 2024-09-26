@@ -1,7 +1,7 @@
 import React from 'react';
-import './Welcome.css';
+import './WelcomeMessage.css';
 
-const Welcome: React.FC = () => {
+const WelcomeMessage: React.FC = () => {
   return (
     <div className="welcome-message">
       <h1>Welcome to the Cat Facts Page!</h1>
@@ -13,4 +13,4 @@ const Welcome: React.FC = () => {
   );
 };
 
-export default Welcome;
+export default WelcomeMessage;

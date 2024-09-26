@@ -1,7 +1,7 @@
-import CatFactsGrid from './components/CatFactsGrid';
-import Navbar from './components/Navbar';
-import Welcome from './components/Welcome';
-import Footer from './components/Footer';
+import CatFactsGrid from './components/CatFactsGrid/CatFactsGrid';
+import Navbar from './components/Navbar/Navbar';
+import WelcomeMessage from './components/WelcomeMessage/WelcomeMessage';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Navbar />
       <div className='content-wrap'>
-      <Welcome /> 
+      <WelcomeMessage /> 
       <CatFactsGrid />
       </div>
       <Footer />

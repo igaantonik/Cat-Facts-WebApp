@@ -1,6 +1,5 @@
 .grid-container {
     display: flex;
-    /* grid-template-columns: repeat(3, 1fr);  */
     flex-wrap: wrap;
     gap: 16px;
     padding: 20px; 
@@ -8,18 +7,12 @@
     justify-content: center;
     
   }
-  
-  /* @media (max-width: 800px) {
-    .grid-container {
-      grid-template-columns: repeat(2, 1fr);
-        }
-  }
-  
+
   @media (max-width: 500px) {
     .grid-container {
       grid-template-columns: 1fr; 
     }
-  } */
+  } 
 
   @media (min-width: 1200px) {
     .grid-container {
