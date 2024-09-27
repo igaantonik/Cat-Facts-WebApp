@@ -4,13 +4,13 @@ import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
+import reactor.util.function.Tuple2
 import java.time.Duration
 
 data class CatFact(val text: String)
 data class RandomUserResponse(val results: List<RandomUser>)
 data class RandomUser(val name: Name)
 data class Name(val first: String, val last: String)
-data class FactWithUser(val user:String, val fact: String)
 
 @Service
 class CatFactsService(private val webClient: WebClient) {
@@ -35,18 +35,14 @@ class CatFactsService(private val webClient: WebClient) {
 			}
 	}
 
-	fun getCatFactsStream(): Flux<List<FactWithUser>> {
-		val catFactList = mutableListOf<FactWithUser>()
-
+	fun getCatFactsStream(): Flux<Map<String, String>> {
 		return Flux.interval(Duration.ofSeconds(10))
 			.flatMap {
 				Mono.zip(fetchRandomCatFact(), fetchRandomUser())
-					.map { tuple ->
+					.map { tuple: Tuple2<String, String> ->
 						val fact = tuple.t1
 						val user = tuple.t2
-						val factWithUser = FactWithUser(user, fact)
-						catFactList.add(factWithUser)
-						catFactList.toList()
+						mapOf("user" to user, "fact" to fact)
 					}
 			}
 	}

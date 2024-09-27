@@ -20,7 +20,7 @@ class CatFactController(private val catFactsService: CatFactsService) {
 
     @CrossOrigin(origins = ["http://localhost:5173"])
     @GetMapping("/cat-facts", produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
-    fun getCatFactsWithUser(): Flux<List<FactWithUser>> {
+    fun getCatFactsWithUser():  Flux<Map<String, String>> {
         return catFactsService.getCatFactsStream()
     }
 }

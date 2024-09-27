@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { fromEventPattern } from 'rxjs';
+import { map } from 'rxjs/operators';
 import CatFactCard from '../CatFactCard/CatFactCard';
 import './CatFactsGrid.css';
 
@@ -11,18 +13,32 @@ const CatFactsGrid: React.FC = () => {
   const [catFacts, setCatFacts] = useState<FactWithUser[]>([]);
 
   useEffect(() => {
-    const eventSource = new EventSource("http://localhost:8080/cat-facts");
+    const eventSource = new EventSource('http://localhost:8080/cat-facts');
+    const sseObservable = fromEventPattern<MessageEvent>(
+      (handler) => {
+        eventSource.onmessage = handler;
+        return () => eventSource.close();
+      },
+      (handler) => eventSource.removeEventListener('message', handler)
+    ).pipe(
+      map((event: MessageEvent) => {
+        try {
+          const newFact: FactWithUser = JSON.parse(event.data); 
+          return newFact; 
+        } catch (error) {
+          console.error('Error parsing data:', error);
+          return null;
+        }
+      })
+    );
 
-    eventSource.onmessage = (event) => {
-      console.log('Received event:', event); 
-      const data = JSON.parse(event.data); 
-      console.log('Parsed data:', data); 
-      setCatFacts(data);
-    };
+    const subscription = sseObservable.subscribe((newFact) => {
+      if (newFact) { 
+        setCatFacts((prevFacts) => [...prevFacts, newFact]); 
+      }
+    });
 
-    return () => {
-      eventSource.close();
-    };
+    return () => subscription.unsubscribe();
   }, []);
 
   return (
