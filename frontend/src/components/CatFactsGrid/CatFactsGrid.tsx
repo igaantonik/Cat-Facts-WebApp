@@ -13,7 +13,9 @@ const CatFactsGrid: React.FC = () => {
   const [catFacts, setCatFacts] = useState<FactWithUser[]>([]);
 
   useEffect(() => {
-    const eventSource = new EventSource('http://localhost:8080/cat-facts');
+    const backendUrl = import.meta.env.REACT_APP_BACKEND_URL || 'http://localhost:8080';
+    const eventSource = new EventSource(`${backendUrl}/cat-facts`);
+
     const sseObservable = fromEventPattern<MessageEvent>(
       (handler) => {
         eventSource.onmessage = handler;
