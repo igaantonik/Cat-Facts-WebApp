@@ -1,9 +1,5 @@
 # Cat-Facts-WebApp
 
-
-
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-
 ## Table of Contents
 - [Description](#description)
 - [Technologies Used](#technologies-used)
@@ -86,6 +82,25 @@ Ensure you have the following installed on your machine:
    ```
    The frontend application should now be running on `http://localhost:5173`.
 
+
+
+
+## Running Backend Tests
+
+Navigate to the backend directory
+
+```bash
+cd backend
+```
+Execute the tests
+
+```bash
+./gradlew test
+```
+
+View Test Reports After running the tests, a detailed report can be found at `backend/build/reports/tests/test/index.html`. Open this file in your browser to see the results.
+
+
 ## Usage
 Once both the backend and frontend are running:
 
@@ -101,8 +116,6 @@ Once both the backend and frontend are running:
 
 
 
-## License
-This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 - **Author:** Iga Antonik

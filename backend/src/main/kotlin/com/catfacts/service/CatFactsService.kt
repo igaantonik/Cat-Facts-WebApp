@@ -9,8 +9,6 @@ import reactor.core.publisher.Mono
 import reactor.util.function.Tuple2
 import java.time.Duration
 
-//data class CatFact(val text: String)
-
 data class CatFact(
 	val text: String,
 	val status: Status
