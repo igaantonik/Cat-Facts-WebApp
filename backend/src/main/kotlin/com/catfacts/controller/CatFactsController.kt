@@ -1,7 +1,6 @@
 package com.catfacts.controller
 
 import com.catfacts.service.CatFactsService
-import com.catfacts.service.FactWithUser
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
